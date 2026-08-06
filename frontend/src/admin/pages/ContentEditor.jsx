@@ -237,6 +237,20 @@ function ContatoTab() {
         <TextField label="Instagram" value={data.instagram} onChange={(v) => setData({ ...data, instagram: v })} />
       </div>
       <TextField label="WhatsApp (opcional)" value={data.whatsapp} onChange={(v) => setData({ ...data, whatsapp: v })} />
+      <h3 style={{ font: '700 15px var(--font-display)', marginTop: 20 }}>Outros projetos</h3>
+      <RepeatList
+        items={data.projects || []}
+        onChange={(projects) => setData({ ...data, projects })}
+        newItem={() => ({ name: '', url: '' })}
+        itemLabel={(item, i) => item.name || `Projeto ${i + 1}`}
+        addLabel="Adicionar projeto"
+        renderItem={(item, i, update) => (
+          <div className="field-row">
+            <TextField label="Nome (ex: ResInfoc)" value={item.name} onChange={(v) => update({ name: v })} />
+            <TextField label="Link (opcional)" placeholder="https://..." value={item.url} onChange={(v) => update({ url: v })} />
+          </div>
+        )}
+      />
       <SaveBar saving={saving} saved={saved} error={error} onSave={() => save(data)} />
     </div>
   );

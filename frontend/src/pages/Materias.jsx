@@ -13,6 +13,7 @@ const CATS = [
   ['entrevista', 'Entrevista'],
   ['opiniao', 'Opinião'],
   ['coluna', 'Coluna'],
+  ['release', 'Release'],
 ];
 
 export default function Materias() {

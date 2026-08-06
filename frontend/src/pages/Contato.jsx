@@ -98,6 +98,26 @@ export default function Contato() {
               {c.instagram}
             </p>
           </div>
+          {Array.isArray(c.projects) && c.projects.length > 0 && (
+            <div style={{ background: '#FFF', border: '1.5px solid #21181414', borderRadius: 20, padding: 32 }}>
+              <h3 style={{ font: '700 19px var(--font-display)', margin: '0 0 14px' }}>Outros projetos</h3>
+              <ul style={{ display: 'flex', flexDirection: 'column', gap: 10, margin: 0, padding: 0, listStyle: 'none' }}>
+                {c.projects.map((p, i) =>
+                  p.url ? (
+                    <li key={i}>
+                      <a href={p.url} target="_blank" rel="noreferrer" style={{ fontSize: 15, fontWeight: 700, color: 'var(--blue)', textDecoration: 'none' }}>
+                        {p.name} ↗
+                      </a>
+                    </li>
+                  ) : (
+                    <li key={i} style={{ fontSize: 15, fontWeight: 700, color: '#21181499' }}>
+                      {p.name}
+                    </li>
+                  )
+                )}
+              </ul>
+            </div>
+          )}
         </div>
       </section>
 

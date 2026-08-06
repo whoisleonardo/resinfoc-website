@@ -9,6 +9,7 @@ const CATEGORIAS = [
   ['entrevista', 'Entrevista'],
   ['opiniao', 'Opinião'],
   ['coluna', 'Coluna'],
+  ['release', 'Release'],
 ];
 
 function newId() {

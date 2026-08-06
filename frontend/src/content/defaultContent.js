@@ -72,6 +72,7 @@ export const defaultContent = {
     email: 'contato@rejorc.ufpr.br',
     instagram: '@rejorc.ufpr',
     whatsapp: '',
+    projects: [{ name: 'ResInfoc', url: '' }],
   },
   footer: {
     description: 'Rede de Jornalismo para a Cidadania — um projeto de extensão da UFPR.',
