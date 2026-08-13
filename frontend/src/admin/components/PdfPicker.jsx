@@ -1,10 +1,5 @@
 import { useRef, useState } from 'react';
-import { api, API_URL } from '../../api';
-
-function resolveUrl(url) {
-  if (!url) return '';
-  return url.startsWith('http') ? url : `${API_URL}${url}`;
-}
+import { api, resolveMediaUrl as resolveUrl } from '../../api';
 
 export default function PdfPicker({ label, url, onChange }) {
   const [uploading, setUploading] = useState(false);

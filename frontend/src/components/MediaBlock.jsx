@@ -1,11 +1,5 @@
 import { getEmbedInfo } from '../utils/video';
-import { API_URL } from '../api';
-
-function resolveUrl(url) {
-  if (!url) return '';
-  if (url.startsWith('http://') || url.startsWith('https://')) return url;
-  return `${API_URL}${url}`;
-}
+import { resolveMediaUrl as resolveUrl } from '../api';
 
 /**
  * Renderiza uma imagem, um video incorporado (YouTube/TikTok/Instagram) ou um

@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { resolveMediaUrl } from '../api';
 import MediaBlock from './MediaBlock';
 
 /**
@@ -90,7 +91,7 @@ export default function MateriaModal({ materia, onClose }) {
           <div className="article-body" dangerouslySetInnerHTML={{ __html: materia.body }} />
           {materia.link && (
             <a
-              href={materia.link}
+              href={resolveMediaUrl(materia.link)}
               target="_blank"
               rel="noreferrer"
               style={{ display: 'inline-block', marginTop: 22, font: '700 15px var(--font-display)', color: 'var(--purple)' }}

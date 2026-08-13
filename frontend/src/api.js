@@ -103,4 +103,9 @@ export const api = {
   getStats: () => request('/api/stats', { auth: true }),
 };
 
+export function resolveMediaUrl(url) {
+  if (!url) return '';
+  return url.startsWith('http://') || url.startsWith('https://') ? url : `${API_URL}${url}`;
+}
+
 export { API_URL };

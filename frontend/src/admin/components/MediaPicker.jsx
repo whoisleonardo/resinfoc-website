@@ -1,11 +1,6 @@
 import { useRef, useState } from 'react';
-import { api, API_URL } from '../../api';
+import { api, resolveMediaUrl as resolveUrl } from '../../api';
 import { VIDEO_TYPES } from '../../utils/video';
-
-function resolveUrl(url) {
-  if (!url) return '';
-  return url.startsWith('http') ? url : `${API_URL}${url}`;
-}
 
 export default function MediaPicker({ media, onChange, label = 'Mídia (imagem, áudio ou vídeo)' }) {
   const value = media || { type: 'image', url: '' };

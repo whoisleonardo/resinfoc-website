@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import { useContent } from '../content/ContentContext';
+import { resolveMediaUrl } from '../api';
 import MediaBlock from '../components/MediaBlock';
 import MateriaModal from '../components/MateriaModal';
 
@@ -104,7 +105,7 @@ export default function Materias() {
             }
             if (m.link) {
               return (
-                <a key={m.id} href={m.link} target="_blank" rel="noreferrer" style={cardStyle}>
+                <a key={m.id} href={resolveMediaUrl(m.link)} target="_blank" rel="noreferrer" style={cardStyle}>
                   {inner}
                 </a>
               );
