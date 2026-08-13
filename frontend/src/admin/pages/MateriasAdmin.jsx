@@ -1,6 +1,7 @@
 import { useSection } from '../hooks/useSection';
 import { TextField, TextAreaField, ColorField, SaveBar } from '../components/Fields';
 import MediaPicker from '../components/MediaPicker';
+import PdfPicker from '../components/PdfPicker';
 import RepeatList from '../components/RepeatList';
 import RichTextField from '../components/RichTextField';
 
@@ -90,13 +91,11 @@ export default function MateriasAdmin() {
                     </select>
                   </div>
                 </div>
-                <div className="field-row">
-                  <ColorField label="Cor da etiqueta" value={item.color} onChange={(v) => update({ color: v })} />
-                  <TextField label="Link externo (opcional)" placeholder="https://..." value={item.link} onChange={(v) => update({ link: v })} />
-                </div>
+                <ColorField label="Cor da etiqueta" value={item.color} onChange={(v) => update({ color: v })} />
                 <MediaPicker label="Imagem/vídeo da matéria" media={item.image} onChange={(m) => update({ image: m })} />
+                <PdfPicker label="Link externo ou PDF (opcional)" url={item.link} onChange={(v) => update({ link: v })} />
                 <RichTextField
-                  label="Matéria completa (ao preencher, clicar no card abre a matéria num quadro; se ficar vazio, o card leva ao link externo)"
+                  label="Matéria completa (ao preencher, clicar no card abre a matéria num quadro; se ficar vazio, o card leva ao link/PDF)"
                   value={item.body || ''}
                   onChange={(v) => update({ body: v })}
                   placeholder="Escreva aqui o texto completo da matéria…"

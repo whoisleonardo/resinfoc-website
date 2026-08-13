@@ -12,11 +12,13 @@ const { UPLOAD_DIR } = require('../utils/paths');
 const ALLOWED_MIME = new Set([
   'image/png', 'image/jpeg', 'image/webp', 'image/gif',
   'audio/mpeg', 'audio/mp3', 'audio/mp4', 'audio/x-m4a', 'audio/ogg', 'audio/wav', 'audio/x-wav',
+  'application/pdf',
 ]);
 // Extensao permitida -> tipo real esperado (jpg e jpeg sao o mesmo formato).
 const EXT_TO_TYPE = {
   '.png': 'png', '.jpg': 'jpeg', '.jpeg': 'jpeg', '.webp': 'webp', '.gif': 'gif',
   '.mp3': 'mp3', '.m4a': 'm4a', '.ogg': 'ogg', '.wav': 'wav',
+  '.pdf': 'pdf',
 };
 
 // O mimetype e o nome do arquivo vem do navegador e podem ser falsificados,
@@ -31,6 +33,7 @@ function sniffMediaType(buf) {
   if (buf.length >= 8 && buf.subarray(4, 8).toString('ascii') === 'ftyp') return 'm4a';
   if (buf.length >= 4 && buf.subarray(0, 4).toString('ascii') === 'OggS') return 'ogg';
   if (buf.length >= 12 && buf.subarray(0, 4).toString('ascii') === 'RIFF' && buf.subarray(8, 12).toString('ascii') === 'WAVE') return 'wav';
+  if (buf.length >= 4 && buf.subarray(0, 4).toString('ascii') === '%PDF') return 'pdf';
   return null;
 }
 
@@ -49,7 +52,7 @@ const upload = multer({
   fileFilter: (req, file, cb) => {
     const ext = path.extname(file.originalname).toLowerCase();
     if (!ALLOWED_MIME.has(file.mimetype) || !(ext in EXT_TO_TYPE)) {
-      return cb(new Error('Formato nao suportado. Imagens: PNG, JPG, WEBP, GIF. Audios: MP3, M4A, OGG, WAV.'));
+      return cb(new Error('Formato nao suportado. Imagens: PNG, JPG, WEBP, GIF. Audios: MP3, M4A, OGG, WAV. Documentos: PDF.'));
     }
     cb(null, true);
   },
