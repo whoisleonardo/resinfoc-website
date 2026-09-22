@@ -6,6 +6,12 @@
   --ink: #173143;
   --bg: var(--surface);
 
+  /* Temporary compatibility aliases for public components pending Tasks 3 and 4. */
+  --purple: var(--brand-ink);
+  --gold: var(--brand-coral);
+  --green: var(--brand-ink);
+  --blue: var(--brand-ink);
+
   --font-display: 'DM Serif Display', Georgia, serif;
   --font-body: 'Nunito Sans', sans-serif;
 
