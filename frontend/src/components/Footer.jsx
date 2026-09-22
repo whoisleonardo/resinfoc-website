@@ -6,7 +6,7 @@ import SocialIcon from './SocialIcon';
 
 const NAV_ITEMS = [
   { to: '/', label: 'Início' },
-  { to: '/sobre', label: 'Sobre' },
+  { to: '/sobre', label: 'Sobre o RESINFOC' },
   { to: '/materias', label: 'Matérias' },
   { to: '/midias', label: 'Mídias' },
   { to: '/atualizacoes', label: 'Atualizações' },
@@ -15,7 +15,8 @@ const NAV_ITEMS = [
 
 function resolveUrl(url) {
   if (!url) return '';
-  return url.startsWith('http') ? url : `${API_URL}${url}`;
+  if (url.startsWith('http')) return url;
+  return url.startsWith('/uploads/') ? `${API_URL}${url}` : url;
 }
 
 export default function Footer() {
@@ -23,21 +24,17 @@ export default function Footer() {
   const footer = content.footer || {};
   const site = content.site || {};
   const socials = footer.socials || [];
-  const logoUrl = site.logoFooter?.url;
+  const logoUrl = site.logoFooter?.url || '/resinfoc-logo.png';
   const year = new Date().getFullYear();
 
   return (
-    <footer style={{ background: 'var(--purple)', color: '#F5F1EA', fontFamily: 'var(--font-body)' }}>
+    <footer style={{ background: 'var(--brand-ink)', color: '#F5F1EA', fontFamily: 'var(--font-body)' }}>
       <div
         className="container grid-3"
         style={{ display: 'grid', gridTemplateColumns: '1.3fr 1fr 1fr', gap: 48, padding: '72px 32px 40px' }}
       >
         <div>
-          {logoUrl ? (
-            <img src={resolveUrl(logoUrl)} alt={site.siteName || 'REJORC'} style={{ height: 44, width: 'auto', display: 'block', marginBottom: 18 }} />
-          ) : (
-            <div style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 24, marginBottom: 18 }}>{site.siteName || 'REJORC'}</div>
-          )}
+          <img src={resolveUrl(logoUrl)} alt={site.siteName || 'RESINFOC'} style={{ height: 44, width: 'auto', display: 'block', marginBottom: 18 }} />
           <p style={{ fontSize: 15.5, lineHeight: 1.6, color: '#F5F1EACC', maxWidth: 360, margin: '0 0 24px' }}>
             {footer.description}
           </p>
@@ -71,7 +68,7 @@ export default function Footer() {
         </div>
 
         <div>
-          <div style={{ font: '700 15px var(--font-display)', textTransform: 'uppercase', letterSpacing: '0.04em', color: 'var(--gold)', marginBottom: 16 }}>
+          <div style={{ font: '700 15px var(--font-display)', textTransform: 'uppercase', letterSpacing: '0.04em', color: 'var(--brand-coral)', marginBottom: 16 }}>
             Navegue
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
@@ -84,7 +81,7 @@ export default function Footer() {
         </div>
 
         <div>
-          <div style={{ font: '700 15px var(--font-display)', textTransform: 'uppercase', letterSpacing: '0.04em', color: 'var(--gold)', marginBottom: 16 }}>
+          <div style={{ font: '700 15px var(--font-display)', textTransform: 'uppercase', letterSpacing: '0.04em', color: 'var(--brand-coral)', marginBottom: 16 }}>
             Newsletter mensal
           </div>
           <p style={{ fontSize: 14.5, lineHeight: 1.6, color: '#F5F1EACC', margin: '0 0 16px' }}>
@@ -107,7 +104,7 @@ export default function Footer() {
           }}
         >
           <div style={{ fontSize: 13.5, color: '#F5F1EA99' }}>
-            © {year} {site.siteName || 'REJORC'} · {site.tagline || 'Rede de Jornalismo para a Cidadania'} · UFPR
+            © {year} {site.siteName || 'RESINFOC'} · {site.tagline || 'Rede Sonora de Informação e Ciência'} · UFPR
           </div>
           <div style={{ fontSize: 13.5, color: '#F5F1EA99' }}>Feito por estudantes, para a comunidade.</div>
         </div>

@@ -5,7 +5,7 @@ import { API_URL } from '../api';
 
 const NAV_ITEMS = [
   { to: '/', label: 'Início', end: true },
-  { to: '/sobre', label: 'Sobre' },
+  { to: '/sobre', label: 'Sobre o RESINFOC' },
   { to: '/materias', label: 'Matérias' },
   { to: '/midias', label: 'Mídias' },
   { to: '/atualizacoes', label: 'Atualizações' },
@@ -14,13 +14,14 @@ const NAV_ITEMS = [
 
 function resolveUrl(url) {
   if (!url) return '';
-  return url.startsWith('http') ? url : `${API_URL}${url}`;
+  if (url.startsWith('http')) return url;
+  return url.startsWith('/uploads/') ? `${API_URL}${url}` : url;
 }
 
 export default function Header() {
   const { content } = useContent();
   const site = content.site || {};
-  const logoUrl = site.logoHeader?.url;
+  const logoUrl = site.logoHeader?.url || '/resinfoc-logo.png';
   const [open, setOpen] = useState(false);
 
   return (
@@ -45,11 +46,7 @@ export default function Header() {
         }}
       >
         <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none', flex: 'none' }}>
-          {logoUrl ? (
-            <img src={resolveUrl(logoUrl)} alt={site.siteName || 'REJORC'} style={{ height: 40, width: 'auto', display: 'block' }} />
-          ) : (
-            <span style={{ fontFamily: 'var(--font-display)', fontWeight: 800, fontSize: 22 }}>{site.siteName || 'REJORC'}</span>
-          )}
+          <img src={resolveUrl(logoUrl)} alt={site.siteName || 'RESINFOC'} style={{ height: 40, width: 'auto', display: 'block' }} />
         </Link>
 
         <nav style={{ display: 'flex', alignItems: 'center', gap: 4, flexWrap: 'wrap' }} className="hide-mobile">
@@ -92,7 +89,7 @@ export default function Header() {
             boxShadow: '0 3px 0 #21181422',
           }}
         >
-          Assine a Newsletter
+          Fale com a gente
         </Link>
 
         <button
@@ -167,7 +164,7 @@ export default function Header() {
               marginTop: 12,
             }}
           >
-            Assine a Newsletter
+            Fale com a gente
           </Link>
         </nav>
       )}

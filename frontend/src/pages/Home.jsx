@@ -7,7 +7,8 @@ export default function Home() {
   const hero = content.home_hero || {};
   const pillars = content.pillars?.items || [];
   const project = content.current_project || {};
-  const materias = (content.materias?.items || []).slice(0, 3);
+  const section = content.materias || {};
+  const materias = (section.items || []).slice(0, 3);
   const fotos = (content.fotos?.items || []).slice(0, 5);
   const newsletterCta = content.newsletter_cta || {};
 
@@ -74,7 +75,7 @@ export default function Home() {
       {/* PILARES */}
       <section className="container" style={{ padding: '0 32px 96px' }}>
         <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 24, marginBottom: 36, flexWrap: 'wrap' }}>
-          <h2 style={{ font: '700 32px var(--font-display)', margin: 0 }}>O que é o REJORC</h2>
+          <h2 style={{ font: '700 32px var(--font-display)', margin: 0 }}>O que é a RESINFOC</h2>
           <Link to="/sobre" style={{ font: '800 15px var(--font-body)', color: 'var(--purple)', textDecoration: 'none' }}>
             Saiba mais →
           </Link>
@@ -90,38 +91,26 @@ export default function Home() {
         </div>
       </section>
 
-      {/* PROJETO ATUAL */}
-      <section style={{ background: 'var(--ink)', padding: '80px 32px' }}>
-        <div className="container grid-2" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 48, alignItems: 'center', padding: 0 }}>
-          <div>
-            <div
-              style={{
-                display: 'inline-block',
-                fontWeight: 800,
-                fontSize: 13,
-                letterSpacing: '0.06em',
-                textTransform: 'uppercase',
-                color: 'var(--gold)',
-                background: '#F4B0301F',
-                padding: '8px 16px',
-                borderRadius: 999,
-                marginBottom: 18,
-              }}
-            >
-              {project.badge}
+      {/* SPOTIFY */}
+      {hero.spotify?.url && (
+        <section className="container" style={{ padding: '0 32px 96px' }}>
+          <div
+            className="audio-feature"
+            style={{ background: 'var(--surface-muted)', border: '1.5px solid #1F527826', borderRadius: 24, padding: '40px 44px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 28, flexWrap: 'wrap' }}
+          >
+            <div>
+              <span className="coral-pill" style={{ display: 'inline-block', color: 'var(--brand-ink)', background: '#FF6F611F', borderRadius: 999, fontSize: 13, fontWeight: 800, letterSpacing: '0.06em', padding: '8px 16px', textTransform: 'uppercase' }}>
+                {hero.spotify.label}
+              </span>
+              <h2 style={{ font: '700 32px var(--font-display)', color: 'var(--ink)', margin: '18px 0 12px' }}>{hero.spotify.title}</h2>
+              <p style={{ fontSize: 16, lineHeight: 1.65, color: '#173143B3', margin: 0, maxWidth: 620 }}>{hero.spotify.text}</p>
             </div>
-            <h2 style={{ font: '700 32px var(--font-display)', color: '#F5F1EA', margin: '0 0 16px' }}>{project.title}</h2>
-            <p style={{ fontSize: 16, lineHeight: 1.65, color: '#F5F1EAB3', margin: '0 0 28px' }}>{project.text}</p>
-            <Link
-              to="/atualizacoes"
-              style={{ font: '700 16px var(--font-display)', color: '#211814', background: 'var(--gold)', padding: '14px 26px', borderRadius: 999, textDecoration: 'none' }}
-            >
-              {project.ctaLabel}
-            </Link>
+            <a href={hero.spotify.url} target="_blank" rel="noreferrer" style={{ flex: 'none', font: '700 16px var(--font-display)', color: '#FFF', background: 'var(--brand-ink)', padding: '14px 24px', borderRadius: 999, textDecoration: 'none' }}>
+              {hero.spotify.ctaLabel}
+            </a>
           </div>
-          <MediaBlock media={project.image} alt="" style={{ height: 260 }} placeholderLabel="[ imagem: bastidores do projeto atual ]" />
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* MATERIAS DESTAQUE */}
       <section className="container" style={{ padding: '96px 32px' }}>
@@ -144,13 +133,48 @@ export default function Home() {
             </Link>
           ))}
         </div>
-        <div style={{ background: '#516E900F', border: '1.5px dashed #516E9066', borderRadius: 16, padding: '22px 26px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 20, flexWrap: 'wrap' }}>
+        <div style={{ background: '#1F52780F', border: '1.5px dashed #1F527866', borderRadius: 16, padding: '22px 26px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 20, flexWrap: 'wrap' }}>
           <p style={{ fontSize: 15, color: '#211814CC', margin: 0 }}>
             Mais reportagens completas também no site do jornal <strong>Comunicação</strong>, parceiro do curso.
           </p>
-          <a href="#" style={{ flex: 'none', font: '700 15px var(--font-display)', color: '#F5F1EA', background: 'var(--blue)', padding: '12px 22px', borderRadius: 999, textDecoration: 'none' }}>
-            Visitar site do jornal ↗
-          </a>
+          {section.bannerUrl && (
+            <a href={section.bannerUrl} target="_blank" rel="noreferrer" style={{ flex: 'none', font: '700 15px var(--font-display)', color: '#FFF', background: 'var(--brand-ink)', padding: '12px 22px', borderRadius: 999, textDecoration: 'none' }}>
+              Visitar site do jornal ↗
+            </a>
+          )}
+        </div>
+      </section>
+
+      {/* PROJETO ATUAL */}
+      <section style={{ background: 'var(--ink)', padding: '80px 32px' }}>
+        <div className="container grid-2" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 48, alignItems: 'center', padding: 0 }}>
+          <div>
+            <div
+              style={{
+                display: 'inline-block',
+                fontWeight: 800,
+                fontSize: 13,
+                letterSpacing: '0.06em',
+                textTransform: 'uppercase',
+                color: 'var(--brand-coral)',
+                background: '#FF6F611F',
+                padding: '8px 16px',
+                borderRadius: 999,
+                marginBottom: 18,
+              }}
+            >
+              {project.badge}
+            </div>
+            <h2 style={{ font: '700 32px var(--font-display)', color: '#F5F1EA', margin: '0 0 16px' }}>{project.title}</h2>
+            <p style={{ fontSize: 16, lineHeight: 1.65, color: '#F5F1EAB3', margin: '0 0 28px' }}>{project.text}</p>
+            <Link
+              to="/atualizacoes"
+              style={{ font: '700 16px var(--font-display)', color: 'var(--ink)', background: 'var(--brand-coral)', padding: '14px 26px', borderRadius: 999, textDecoration: 'none' }}
+            >
+              {project.ctaLabel}
+            </Link>
+          </div>
+          <MediaBlock media={project.image} alt="" style={{ height: 260 }} placeholderLabel="[ imagem: bastidores do projeto atual ]" />
         </div>
       </section>
 
@@ -177,21 +201,21 @@ export default function Home() {
         </div>
       </section>
 
-      {/* NEWSLETTER CTA */}
+      {/* CONTATO */}
       <section className="container" style={{ margin: '24px auto 96px', padding: '0 32px' }}>
         <div
           className="grid-2"
-          style={{ background: 'var(--gold)', borderRadius: 28, padding: '56px 48px', display: 'grid', gridTemplateColumns: '1.3fr 1fr', gap: 32, alignItems: 'center' }}
+          style={{ background: 'var(--brand-coral)', borderRadius: 28, padding: '56px 48px', display: 'grid', gridTemplateColumns: '1.3fr 1fr', gap: 32, alignItems: 'center' }}
         >
           <div>
-            <h2 style={{ font: '800 30px var(--font-display)', color: '#211814', margin: '0 0 12px' }}>{newsletterCta.title}</h2>
-            <p style={{ fontSize: 16, lineHeight: 1.6, color: '#211814CC', margin: 0 }}>{newsletterCta.text}</p>
+            <h2 style={{ font: '800 30px var(--font-display)', color: 'var(--ink)', margin: '0 0 12px' }}>{newsletterCta.title}</h2>
+            <p style={{ fontSize: 16, lineHeight: 1.6, color: '#173143CC', margin: 0 }}>{newsletterCta.text}</p>
           </div>
           <Link
             to="/contato"
-            style={{ justifySelf: 'end', font: '700 16.5px var(--font-display)', color: '#F5F1EA', background: 'var(--ink)', padding: '16px 30px', borderRadius: 999, textDecoration: 'none', whiteSpace: 'nowrap' }}
+            style={{ justifySelf: 'end', font: '700 16.5px var(--font-display)', color: '#FFF', background: 'var(--brand-ink)', padding: '16px 30px', borderRadius: 999, textDecoration: 'none', whiteSpace: 'nowrap' }}
           >
-            Assinar agora
+            Fale com a gente
           </Link>
         </div>
       </section>
