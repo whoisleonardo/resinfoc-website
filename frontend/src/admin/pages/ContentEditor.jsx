@@ -48,7 +48,7 @@ function SiteTab() {
       <h2>Identidade do site</h2>
       <p className="hint">Nome, logotipos e assinatura usados no cabeçalho e rodapé.</p>
       <TextField label="Nome do site" value={data.siteName} onChange={(v) => setData({ ...data, siteName: v })} />
-      <TextField label="Assinatura (ex: Rede de Jornalismo para a Cidadania)" value={data.tagline} onChange={(v) => setData({ ...data, tagline: v })} />
+      <TextField label="Assinatura (ex: Rede Sonora de Informação e Ciência)" value={data.tagline} onChange={(v) => setData({ ...data, tagline: v })} />
       <MediaPicker label="Logotipo do cabeçalho" media={data.logoHeader} onChange={(m) => setData({ ...data, logoHeader: m })} />
       <MediaPicker label="Logotipo do rodapé" media={data.logoFooter} onChange={(m) => setData({ ...data, logoFooter: m })} />
       <SaveBar saving={saving} saved={saved} error={error} onSave={() => save(data)} />
@@ -83,14 +83,14 @@ function HomeTab() {
       </div>
 
       <div className="admin-card">
-        <h2>Pilares ("O que é o REJORC")</h2>
+        <h2>Pilares ("O que é o RESINFOC")</h2>
         <p className="hint">Os três cartões que explicam o projeto.</p>
         {pillars.data && (
           <>
             <RepeatList
               items={pillars.data.items}
               onChange={(items) => pillars.setData({ ...pillars.data, items })}
-              newItem={() => ({ title: '', text: '', color: '#573B6F' })}
+              newItem={() => ({ title: '', text: '', color: '#1F5278' })}
               itemLabel={(item, i) => item.title || `Pilar ${i + 1}`}
               addLabel="Adicionar pilar"
               renderItem={(item, i, update) => (

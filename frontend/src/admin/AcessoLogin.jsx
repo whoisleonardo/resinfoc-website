@@ -33,7 +33,7 @@ export default function AcessoLogin() {
   return (
     <div className="login-screen">
       <div className="login-card">
-        <div style={{ font: '800 26px var(--font-display)', color: '#211814' }}>REJORC</div>
+        <div style={{ font: '800 26px var(--font-display)', color: 'var(--brand-ink)' }}>RESINFOC</div>
         <h1>Acesso da gestão</h1>
         <p className="sub">Entre com sua conta para gerenciar o conteúdo do site.</p>
 

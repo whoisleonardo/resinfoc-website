@@ -138,7 +138,7 @@ export default function NewsletterSendTab() {
           type="text"
           value={subject}
           onChange={(e) => setSubject(e.target.value)}
-          placeholder="Ex: Novidades do REJORC — edição de julho"
+          placeholder="Ex: Novidades do RESINFOC — edição de julho"
           maxLength={200}
           style={{ width: '100%', padding: '10px 12px', borderRadius: 10, border: '1.5px solid #21181426', marginBottom: 16 }}
         />

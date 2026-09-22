@@ -30,7 +30,7 @@ export default function AdminLayout() {
         <aside className="admin-sidebar">
           <div className="brand">
             <span style={{ fontSize: 20 }}>📰</span>
-            <span>REJORC · Painel</span>
+            <span>RESINFOC · Painel</span>
           </div>
 
           <nav className="admin-nav">
