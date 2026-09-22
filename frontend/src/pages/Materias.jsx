@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import { useContent } from '../content/ContentContext';
+import { displayColor } from '../content/displayColor';
 import { resolveMediaUrl } from '../api';
 import MediaBlock from '../components/MediaBlock';
 import MateriaModal from '../components/MateriaModal';
@@ -86,7 +87,7 @@ export default function Materias() {
               <>
                 <MediaBlock media={m.image} alt={m.title} radius={0} style={{ height: 170 }} placeholderLabel="[ foto da matéria ]" />
                 <div style={{ padding: 22 }}>
-                  <div style={{ fontWeight: 800, fontSize: 12.5, letterSpacing: '0.04em', textTransform: 'uppercase', color: 'var(--brand-ink)', marginBottom: 10 }}>{m.tag}</div>
+                  <div style={{ fontWeight: 800, fontSize: 12.5, letterSpacing: '0.04em', textTransform: 'uppercase', color: displayColor(m.color), marginBottom: 10 }}>{m.tag}</div>
                   <h3 style={{ font: '700 19px/1.25 var(--font-display)', color: 'var(--ink)', margin: '0 0 8px' }}>{m.title}</h3>
                   <p style={{ fontSize: 14, lineHeight: 1.55, color: 'var(--ink)', margin: '0 0 12px' }}>{m.excerpt}</p>
                   <div style={{ fontSize: 13, color: 'var(--brand-ink)' }}>{m.date}</div>

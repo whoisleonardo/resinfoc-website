@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useContent } from '../content/ContentContext';
+import { displayColor } from '../content/displayColor';
 import MediaBlock from '../components/MediaBlock';
 
 export default function Sobre() {
@@ -25,7 +26,7 @@ export default function Sobre() {
       <section className="container grid-3" style={{ padding: '40px 32px 96px', display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 24 }}>
         {stats.map((st, i) => (
           <div key={i} style={{ background: 'var(--surface)', border: '1.5px solid color-mix(in srgb, var(--brand-ink) 16%, transparent)', borderRadius: 20, padding: '30px 26px', textAlign: 'center' }}>
-            <div style={{ font: '800 40px var(--font-display)', color: 'var(--brand-ink)' }}>{st.value}</div>
+            <div style={{ font: '800 40px var(--font-display)', color: displayColor(st.color) }}>{st.value}</div>
             <div style={{ fontWeight: 700, fontSize: 14.5, color: 'var(--ink)', marginTop: 6 }}>{st.label}</div>
           </div>
         ))}
@@ -37,7 +38,7 @@ export default function Sobre() {
           <div className="grid-2" style={{ display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: 40 }}>
             {missao.map((m, i) => (
               <div key={i} style={{ display: 'flex', gap: 18, alignItems: 'flex-start' }}>
-                <div aria-hidden="true" style={{ width: 44, height: 44, borderRadius: 12, background: 'var(--brand-coral)', flex: 'none' }} />
+                <div aria-hidden="true" style={{ width: 44, height: 44, borderRadius: 12, background: displayColor(m.color, 'var(--brand-coral)'), border: '1px solid var(--surface)', flex: 'none' }} />
                 <div>
                   <h3 style={{ font: '700 19px var(--font-display)', color: 'var(--surface)', margin: '0 0 8px' }}>{m.title}</h3>
                   <p style={{ fontSize: 15, lineHeight: 1.6, color: 'var(--surface)', margin: 0 }}>{m.text}</p>
@@ -53,7 +54,7 @@ export default function Sobre() {
         <div className="grid-4" style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 20 }}>
           {passos.map((p, i) => (
             <div key={i} style={{ position: 'relative', paddingTop: 20 }}>
-              <div style={{ font: '800 15px var(--font-display)', color: 'var(--ink)', background: 'var(--brand-coral)', width: 36, height: 36, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 16 }}>
+              <div style={{ font: '800 15px var(--font-display)', color: 'var(--surface)', background: displayColor(p.color), width: 36, height: 36, borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 16 }}>
                 {p.n}
               </div>
               <h3 style={{ font: '700 18px var(--font-display)', margin: '0 0 8px' }}>{p.title}</h3>

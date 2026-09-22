@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { resolveMediaUrl } from '../api';
+import { displayColor } from '../content/displayColor';
 import MediaBlock from './MediaBlock';
 
 /**
@@ -82,7 +83,7 @@ export default function MateriaModal({ materia, onClose }) {
 
         <div style={{ padding: '26px 36px 44px' }}>
           <div style={{ display: 'flex', gap: 14, alignItems: 'baseline', flexWrap: 'wrap', marginBottom: 12 }}>
-            <span style={{ fontWeight: 800, fontSize: 12.5, letterSpacing: '0.04em', textTransform: 'uppercase', color: materia.color || 'var(--purple)' }}>
+            <span style={{ fontWeight: 800, fontSize: 12.5, letterSpacing: '0.04em', textTransform: 'uppercase', color: displayColor(materia.color) }}>
               {materia.tag}
             </span>
             <span style={{ fontSize: 13.5, color: '#21181480' }}>{materia.date}</span>

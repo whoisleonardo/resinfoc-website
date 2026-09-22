@@ -32,7 +32,7 @@ export default function NewsletterSair() {
         <p>Este link de descadastro está incompleto. Abra o link exatamente como veio no e-mail.</p>
       ) : status === 'done' ? (
         <>
-          <p>Pronto! Você não vai mais receber a newsletter do REJORC.</p>
+          <p>Pronto! Você não vai mais receber a newsletter da RESINFOC.</p>
           <p>Mudou de ideia? É só se inscrever de novo pelo rodapé do site.</p>
           <Link className="btn btn-gold" to="/">Voltar para o site</Link>
         </>
@@ -40,7 +40,7 @@ export default function NewsletterSair() {
         <p>{message || 'Não foi possível processar o descadastro. Tente abrir o link do e-mail novamente.'}</p>
       ) : (
         <>
-          <p>Você quer parar de receber os e-mails da newsletter do REJORC?</p>
+          <p>Você quer parar de receber os e-mails da newsletter da RESINFOC?</p>
           <button type="button" className="btn btn-gold" onClick={handleUnsubscribe} disabled={status === 'busy'}>
             {status === 'busy' ? 'Removendo…' : 'Sim, quero sair da lista'}
           </button>

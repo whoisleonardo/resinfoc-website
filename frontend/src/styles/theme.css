@@ -60,8 +60,9 @@ img { max-width: 100%; display: block; }
 }
 
 :focus-visible {
-  outline: 3px solid var(--brand-coral);
-  outline-offset: 2px;
+  outline: 3px solid var(--ink);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 3px var(--surface);
 }
 
 /* Corpo das materias completas (HTML vindo do editor do painel) */

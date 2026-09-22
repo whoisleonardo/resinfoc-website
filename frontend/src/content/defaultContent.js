@@ -3,10 +3,10 @@
 // o conteudo salvo pela gestora no /acesso sempre tem prioridade.
 
 const COLORS = {
-  purple: '#573B6F',
-  gold: '#F4B030',
-  green: '#378054',
-  blue: '#516E90',
+  purple: '#1F5278',
+  gold: '#A63D32',
+  green: '#173143',
+  blue: '#1F5278',
 };
 
 export const defaultContent = {

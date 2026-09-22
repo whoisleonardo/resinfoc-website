@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useContent } from '../content/ContentContext';
+import { displayColor } from '../content/displayColor';
 import MediaBlock from '../components/MediaBlock';
 
 export default function Home() {
@@ -10,7 +11,6 @@ export default function Home() {
   const section = content.materias || {};
   const materias = (section.items || []).slice(0, 3);
   const fotos = (content.fotos?.items || []).slice(0, 5);
-  const newsletterCta = content.newsletter_cta || {};
 
   return (
     <div>
@@ -27,8 +27,8 @@ export default function Home() {
               fontSize: 13,
               letterSpacing: '0.06em',
               textTransform: 'uppercase',
-              color: 'var(--purple)',
-              background: '#573B6F1A',
+              color: 'var(--brand-ink)',
+              background: 'var(--surface-muted)',
               padding: '8px 16px',
               borderRadius: 999,
               marginBottom: 22,
@@ -36,18 +36,18 @@ export default function Home() {
           >
             {hero.badge}
           </div>
-          <h1 style={{ font: '800 56px/1.05 var(--font-display)', color: '#211814', margin: '0 0 24px' }}>{hero.title}</h1>
-          <p style={{ fontSize: 19, lineHeight: 1.65, color: '#211814B3', maxWidth: 520, margin: '0 0 36px' }}>{hero.subtitle}</p>
+          <h1 style={{ font: '800 56px/1.05 var(--font-display)', color: 'var(--ink)', margin: '0 0 24px' }}>{hero.title}</h1>
+          <p style={{ fontSize: 19, lineHeight: 1.65, color: 'var(--ink)', maxWidth: 520, margin: '0 0 36px' }}>{hero.subtitle}</p>
           <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
             <Link
               to="/sobre"
-              style={{ font: '700 16px var(--font-display)', color: '#F5F1EA', background: 'var(--ink)', padding: '15px 26px', borderRadius: 999, textDecoration: 'none' }}
+              style={{ font: '700 16px var(--font-display)', color: 'var(--surface)', background: 'var(--brand-ink)', padding: '15px 26px', borderRadius: 999, textDecoration: 'none' }}
             >
               {hero.ctaPrimaryLabel}
             </Link>
             <Link
               to="/materias"
-              style={{ font: '700 16px var(--font-display)', color: '#211814', border: '2px solid #21181433', padding: '13px 26px', borderRadius: 999, textDecoration: 'none' }}
+              style={{ font: '700 16px var(--font-display)', color: 'var(--ink)', border: '2px solid #1F527866', padding: '13px 26px', borderRadius: 999, textDecoration: 'none' }}
             >
               {hero.ctaSecondaryLabel}
             </Link>
@@ -63,7 +63,7 @@ export default function Home() {
               width: 'min(420px, 82vw)',
               aspectRatio: '1 / 1',
               borderRadius: '50%',
-              background: '#F4B03026',
+              background: '#FF6F6126',
             }}
           />
           <div style={{ position: 'relative', width: 'min(340px, 100%)' }}>
@@ -76,16 +76,16 @@ export default function Home() {
       <section className="container" style={{ padding: '0 32px 96px' }}>
         <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 24, marginBottom: 36, flexWrap: 'wrap' }}>
           <h2 style={{ font: '700 32px var(--font-display)', margin: 0 }}>O que é a RESINFOC</h2>
-          <Link to="/sobre" style={{ font: '800 15px var(--font-body)', color: 'var(--purple)', textDecoration: 'none' }}>
+          <Link to="/sobre" style={{ font: '800 15px var(--font-body)', color: 'var(--brand-ink)', textDecoration: 'none' }}>
             Saiba mais →
           </Link>
         </div>
         <div className="grid-3" style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 24 }}>
           {pillars.map((p, i) => (
-            <div key={i} style={{ background: '#FFF', border: '1.5px solid #21181414', borderRadius: 20, padding: '32px 28px' }}>
-              <div style={{ width: 52, height: 52, borderRadius: 14, background: p.color, marginBottom: 20 }} />
+            <div key={i} style={{ background: '#FFF', border: '1.5px solid #1F527826', borderRadius: 20, padding: '32px 28px' }}>
+              <div style={{ width: 52, height: 52, borderRadius: 14, background: displayColor(p.color), marginBottom: 20 }} />
               <h3 style={{ font: '700 21px var(--font-display)', margin: '0 0 10px' }}>{p.title}</h3>
-              <p style={{ fontSize: 15, lineHeight: 1.6, color: '#211814AA', margin: 0 }}>{p.text}</p>
+              <p style={{ fontSize: 15, lineHeight: 1.6, color: 'var(--ink)', margin: 0 }}>{p.text}</p>
             </div>
           ))}
         </div>
@@ -113,28 +113,28 @@ export default function Home() {
       )}
 
       {/* MATERIAS DESTAQUE */}
-      <section className="container" style={{ padding: '96px 32px' }}>
+      <section className="container" style={{ padding: '0 32px 96px' }}>
         <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 24, marginBottom: 36, flexWrap: 'wrap' }}>
           <h2 style={{ font: '700 32px var(--font-display)', margin: 0 }}>Matérias em destaque</h2>
-          <Link to="/materias" style={{ font: '800 15px var(--font-body)', color: 'var(--purple)', textDecoration: 'none' }}>
+          <Link to="/materias" style={{ font: '800 15px var(--font-body)', color: 'var(--brand-ink)', textDecoration: 'none' }}>
             Ver todas →
           </Link>
         </div>
         <div className="grid-3" style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 24, marginBottom: 20 }}>
           {materias.length === 0 && <div className="empty-state">Nenhuma matéria publicada ainda.</div>}
           {materias.map((m) => (
-            <Link key={m.id} to="/materias" style={{ textDecoration: 'none', display: 'block', background: '#FFF', borderRadius: 20, overflow: 'hidden', border: '1.5px solid #21181414' }}>
+            <Link key={m.id} to="/materias" style={{ textDecoration: 'none', display: 'block', background: '#FFF', borderRadius: 20, overflow: 'hidden', border: '1.5px solid #1F527826' }}>
               <MediaBlock media={m.image} alt={m.title} radius={0} style={{ height: 170 }} placeholderLabel="[ foto da matéria ]" />
               <div style={{ padding: 22 }}>
-                <div style={{ fontWeight: 800, fontSize: 12.5, letterSpacing: '0.04em', textTransform: 'uppercase', color: m.color, marginBottom: 10 }}>{m.tag}</div>
-                <h3 style={{ font: '700 19px/1.25 var(--font-display)', color: '#211814', margin: '0 0 8px' }}>{m.title}</h3>
-                <p style={{ fontSize: 14, lineHeight: 1.55, color: '#21181499', margin: 0 }}>{m.excerpt}</p>
+                <div style={{ fontWeight: 800, fontSize: 12.5, letterSpacing: '0.04em', textTransform: 'uppercase', color: displayColor(m.color), marginBottom: 10 }}>{m.tag}</div>
+                <h3 style={{ font: '700 19px/1.25 var(--font-display)', color: 'var(--ink)', margin: '0 0 8px' }}>{m.title}</h3>
+                <p style={{ fontSize: 14, lineHeight: 1.55, color: 'var(--ink)', margin: 0 }}>{m.excerpt}</p>
               </div>
             </Link>
           ))}
         </div>
         <div style={{ background: '#1F52780F', border: '1.5px dashed #1F527866', borderRadius: 16, padding: '22px 26px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 20, flexWrap: 'wrap' }}>
-          <p style={{ fontSize: 15, color: '#211814CC', margin: 0 }}>
+          <p style={{ fontSize: 15, color: 'var(--ink)', margin: 0 }}>
             Mais reportagens completas também no site do jornal <strong>Comunicação</strong>, parceiro do curso.
           </p>
           {section.bannerUrl && (
@@ -165,8 +165,8 @@ export default function Home() {
             >
               {project.badge}
             </div>
-            <h2 style={{ font: '700 32px var(--font-display)', color: '#F5F1EA', margin: '0 0 16px' }}>{project.title}</h2>
-            <p style={{ fontSize: 16, lineHeight: 1.65, color: '#F5F1EAB3', margin: '0 0 28px' }}>{project.text}</p>
+            <h2 style={{ font: '700 32px var(--font-display)', color: 'var(--surface)', margin: '0 0 16px' }}>{project.title}</h2>
+            <p style={{ fontSize: 16, lineHeight: 1.65, color: 'var(--surface)', margin: '0 0 28px' }}>{project.text}</p>
             <Link
               to="/atualizacoes"
               style={{ font: '700 16px var(--font-display)', color: 'var(--ink)', background: 'var(--brand-coral)', padding: '14px 26px', borderRadius: 999, textDecoration: 'none' }}
@@ -179,10 +179,10 @@ export default function Home() {
       </section>
 
       {/* GALERIA */}
-      <section className="container" style={{ padding: '0 32px 96px' }}>
+      <section className="container" style={{ padding: '96px 32px' }}>
         <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: 24, marginBottom: 36, flexWrap: 'wrap' }}>
           <h2 style={{ font: '700 32px var(--font-display)', margin: 0 }}>Coisas que já fizemos</h2>
-          <Link to="/midias" style={{ font: '800 15px var(--font-body)', color: 'var(--purple)', textDecoration: 'none' }}>
+          <Link to="/midias" style={{ font: '800 15px var(--font-body)', color: 'var(--brand-ink)', textDecoration: 'none' }}>
             Ver galeria completa →
           </Link>
         </div>
@@ -208,8 +208,8 @@ export default function Home() {
           style={{ background: 'var(--brand-coral)', borderRadius: 28, padding: '56px 48px', display: 'grid', gridTemplateColumns: '1.3fr 1fr', gap: 32, alignItems: 'center' }}
         >
           <div>
-            <h2 style={{ font: '800 30px var(--font-display)', color: 'var(--ink)', margin: '0 0 12px' }}>{newsletterCta.title}</h2>
-            <p style={{ fontSize: 16, lineHeight: 1.6, color: '#173143CC', margin: 0 }}>{newsletterCta.text}</p>
+            <h2 style={{ font: '800 30px var(--font-display)', color: 'var(--ink)', margin: '0 0 12px' }}>Vamos conversar?</h2>
+            <p style={{ fontSize: 16, lineHeight: 1.6, color: 'var(--ink)', margin: 0 }}>Tem uma sugestão de tema, uma proposta de parceria ou quer participar da RESINFOC? Entre em contato com a equipe.</p>
           </div>
           <Link
             to="/contato"
