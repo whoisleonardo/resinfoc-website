@@ -6,9 +6,6 @@
   command = "npm run build"
   publish = "dist"
 
-[build.environment]
-  VITE_API_URL = "https://rejorc.147.15.26.90.sslip.io"
-
 # SPA: toda rota cai no index.html (React Router cuida do resto)
 [[redirects]]
   from = "/*"
