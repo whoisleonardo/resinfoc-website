@@ -1,12 +1,12 @@
 :root {
-  --bg: #F5F1EA;
-  --ink: #211814;
-  --purple: #573B6F;
-  --gold: #F4B030;
-  --green: #378054;
-  --blue: #516E90;
+  --brand-ink: #1f5278;
+  --brand-coral: #ff6f61;
+  --surface: #fffaf6;
+  --surface-muted: #eef4f5;
+  --ink: #173143;
+  --bg: var(--surface);
 
-  --font-display: 'Baloo 2', sans-serif;
+  --font-display: 'DM Serif Display', Georgia, serif;
   --font-body: 'Nunito Sans', sans-serif;
 
   --max-width: 1240px;
@@ -42,33 +42,33 @@ img { max-width: 100%; display: block; }
 
 /* Placeholder usado quando ainda nao ha imagem/video cadastrado numa secao */
 .ph {
-  background: repeating-linear-gradient(135deg, #21181414 0 12px, #21181408 12px 24px);
+  background: repeating-linear-gradient(135deg, #1f527814 0 12px, #1f527808 12px 24px);
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: var(--font-body);
   font-size: 12.5px;
-  color: #211814AA;
+  color: #173143AA;
   text-align: center;
   padding: 12px;
 }
 
 :focus-visible {
-  outline: 3px solid var(--blue);
+  outline: 3px solid var(--brand-coral);
   outline-offset: 2px;
 }
 
 /* Corpo das materias completas (HTML vindo do editor do painel) */
-.article-body { font-size: 16.5px; line-height: 1.75; color: #211814; overflow-wrap: break-word; }
+.article-body { font-size: 16.5px; line-height: 1.75; color: var(--ink); overflow-wrap: break-word; }
 .article-body p { margin: 0 0 14px; }
 .article-body h1, .article-body h2, .article-body h3, .article-body h4 {
   font-family: var(--font-display); line-height: 1.25; margin: 24px 0 12px;
 }
 .article-body img { max-width: 100%; height: auto; border-radius: 12px; margin: 8px 0; }
 .article-body blockquote {
-  border-left: 4px solid var(--gold); margin: 16px 0; padding: 6px 0 6px 18px; color: #211814B3;
+  border-left: 4px solid var(--brand-coral); margin: 16px 0; padding: 6px 0 6px 18px; color: #173143B3;
 }
-.article-body a { color: var(--purple); }
+.article-body a { color: var(--brand-ink); }
 .article-body ol, .article-body ul { padding-left: 26px; margin: 0 0 14px; }
 .article-body li { margin-bottom: 4px; }
 .article-body li[data-list='bullet'] { list-style-type: disc; }
