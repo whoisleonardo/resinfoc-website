@@ -15,12 +15,26 @@ rejorc-app/
 └── frontend/    Site + painel em React (Vite)
 ```
 
-- **Site público**: `/`, `/sobre`, `/materias`, `/fotos`, `/atualizacoes`, `/contato`
+- **Site público**: `/`, `/sobre`, `/materias`, `/midias`, `/atualizacoes`,
+  `/contato` e `/newsletter/sair` (`/fotos` redireciona para `/midias`)
 - **Painel da gestão**: `/acesso` (login) → `/acesso/painel` (dashboard)
 
 Todo o conteúdo do site público vem da API — ou seja, tudo que a gestora
 edita no painel aparece automaticamente no site, sem precisar mexer em
 código.
+
+## Identidade RESINFOC
+
+O site público é uma versão *white-label* RESINFOC do sistema de conteúdo
+existente: o painel e o fluxo de edição continuam os mesmos. A marca usada
+como fallback visual está em `frontend/public/resinfoc-logo.png`; a gestão
+pode substituí-la pelo editor de conteúdo já disponível no painel, sem alterar
+o código.
+
+As integrações públicas configuradas são:
+
+- [Spotify — RESINFOC](https://open.spotify.com/show/03hof1vNtNXhtwey0UPZYp?si=DovdvEyUQXaGKAewF9ROww&utm_source=copy-link)
+- [Jornal Comunicação](https://jornalcomunicacao.ufpr.br/tag/jornal-comunicacao/)
 
 ## O que o painel (`/acesso`) permite fazer
 
