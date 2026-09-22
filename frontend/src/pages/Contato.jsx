@@ -34,50 +34,50 @@ export default function Contato() {
   return (
     <div>
       <section className="container" style={{ padding: '36px 32px 24px' }}>
-        <div style={{ display: 'inline-block', fontWeight: 800, fontSize: 13, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--purple)', background: '#573B6F1A', padding: '8px 16px', borderRadius: 999, marginBottom: 20 }}>
+        <div style={{ display: 'inline-block', fontWeight: 800, fontSize: 13, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--brand-ink)', background: 'var(--surface-muted)', padding: '8px 16px', borderRadius: 999, marginBottom: 20 }}>
           {c.badge}
         </div>
         <h1 style={{ font: '800 44px var(--font-display)', margin: '0 0 16px' }}>{c.title}</h1>
-        <p style={{ fontSize: 17, lineHeight: 1.6, color: '#211814B3', maxWidth: 640, margin: 0 }}>{c.subtitle}</p>
+        <p style={{ fontSize: 17, lineHeight: 1.6, color: 'var(--ink)', maxWidth: 640, margin: 0 }}>{c.subtitle}</p>
       </section>
 
       <section className="container grid-2" style={{ padding: '24px 32px 96px', display: 'grid', gridTemplateColumns: '1.1fr 0.9fr', gap: 40 }}>
-        <div style={{ background: '#FFF', border: '1.5px solid #21181414', borderRadius: 22, padding: 40 }}>
+        <div style={{ minWidth: 0, background: 'var(--surface)', border: '1.5px solid color-mix(in srgb, var(--brand-ink) 16%, transparent)', borderRadius: 22, padding: 'clamp(20px, 4vw, 40px)' }}>
           {sent ? (
             <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 14, padding: '30px 0' }}>
-              <div style={{ width: 52, height: 52, borderRadius: '50%', background: '#37805426', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 24 }}>✓</div>
+              <div style={{ width: 52, height: 52, borderRadius: '50%', color: 'var(--brand-ink)', background: 'var(--surface-muted)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 24 }}>✓</div>
               <h3 style={{ font: '700 22px var(--font-display)', margin: 0 }}>Mensagem enviada!</h3>
-              <p style={{ fontSize: 15, color: '#21181499', margin: 0 }}>Obrigado pelo contato — vamos responder em breve.</p>
+              <p style={{ fontSize: 15, color: 'var(--ink)', margin: 0 }}>Obrigado pelo contato — vamos responder em breve.</p>
             </div>
           ) : (
             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 18 }}>
               {error && <div className="alert alert-error">{error}</div>}
-              <div className="field-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 18 }}>
-                <label style={{ display: 'flex', flexDirection: 'column', gap: 8, fontWeight: 700, fontSize: 13.5, color: '#21181499' }}>
+              <div className="field-row grid-2" style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr)', gap: 18 }}>
+                <label style={{ display: 'flex', flexDirection: 'column', gap: 8, fontWeight: 700, fontSize: 13.5, color: 'var(--ink)' }}>
                   Nome
                   <input required type="text" value={form.nome} onChange={setField('nome')} style={inputStyle} />
                 </label>
-                <label style={{ display: 'flex', flexDirection: 'column', gap: 8, fontWeight: 700, fontSize: 13.5, color: '#21181499' }}>
+                <label style={{ display: 'flex', flexDirection: 'column', gap: 8, fontWeight: 700, fontSize: 13.5, color: 'var(--ink)' }}>
                   E-mail
                   <input required type="email" value={form.email} onChange={setField('email')} style={inputStyle} />
                 </label>
               </div>
-              <label style={{ display: 'flex', flexDirection: 'column', gap: 8, fontWeight: 700, fontSize: 13.5, color: '#21181499' }}>
+              <label style={{ display: 'flex', flexDirection: 'column', gap: 8, fontWeight: 700, fontSize: 13.5, color: 'var(--ink)' }}>
                 Assunto
-                <select value={form.assunto} onChange={setField('assunto')} style={{ ...inputStyle, background: '#fff' }}>
+                <select value={form.assunto} onChange={setField('assunto')} style={inputStyle}>
                   {ASSUNTOS.map((a) => (
                     <option key={a}>{a}</option>
                   ))}
                 </select>
               </label>
-              <label style={{ display: 'flex', flexDirection: 'column', gap: 8, fontWeight: 700, fontSize: 13.5, color: '#21181499' }}>
+              <label style={{ display: 'flex', flexDirection: 'column', gap: 8, fontWeight: 700, fontSize: 13.5, color: 'var(--ink)' }}>
                 Mensagem
                 <textarea required rows={5} value={form.mensagem} onChange={setField('mensagem')} style={{ ...inputStyle, resize: 'vertical' }} />
               </label>
               <button
                 type="submit"
                 disabled={sending}
-                style={{ alignSelf: 'flex-start', font: '700 16px var(--font-display)', color: '#F5F1EA', background: 'var(--ink)', padding: '14px 28px', borderRadius: 999, border: 'none', cursor: 'pointer' }}
+                style={{ alignSelf: 'flex-start', font: '700 16px var(--font-display)', color: 'var(--surface)', background: 'var(--brand-ink)', padding: '14px 28px', borderRadius: 999, border: 'none', cursor: 'pointer' }}
               >
                 {sending ? 'Enviando…' : 'Enviar mensagem'}
               </button>
@@ -86,31 +86,31 @@ export default function Contato() {
         </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
-          <div style={{ background: 'var(--purple)', borderRadius: 20, padding: 32, color: '#F5F1EA' }}>
+          <div style={{ background: 'var(--brand-ink)', borderRadius: 20, padding: 32, color: 'var(--surface)' }}>
             <h3 style={{ font: '700 19px var(--font-display)', margin: '0 0 14px' }}>Onde estamos</h3>
-            <p style={{ fontSize: 15, lineHeight: 1.7, color: '#F5F1EAD9', margin: 0, whiteSpace: 'pre-line' }}>{c.address}</p>
+            <p style={{ fontSize: 15, lineHeight: 1.7, color: 'var(--surface)', margin: 0, whiteSpace: 'pre-line' }}>{c.address}</p>
           </div>
-          <div style={{ background: '#FFF', border: '1.5px solid #21181414', borderRadius: 20, padding: 32 }}>
+          <div style={{ background: 'var(--surface)', border: '1.5px solid color-mix(in srgb, var(--brand-ink) 16%, transparent)', borderRadius: 20, padding: 32 }}>
             <h3 style={{ font: '700 19px var(--font-display)', margin: '0 0 14px' }}>Contato direto</h3>
-            <p style={{ fontSize: 15, lineHeight: 1.8, color: '#21181499', margin: 0 }}>
+            <p style={{ fontSize: 15, lineHeight: 1.8, color: 'var(--ink)', overflowWrap: 'anywhere', margin: 0 }}>
               {c.email}
               <br />
               {c.instagram}
             </p>
           </div>
           {Array.isArray(c.projects) && c.projects.length > 0 && (
-            <div style={{ background: '#FFF', border: '1.5px solid #21181414', borderRadius: 20, padding: 32 }}>
+            <div style={{ background: 'var(--surface)', border: '1.5px solid color-mix(in srgb, var(--brand-ink) 16%, transparent)', borderRadius: 20, padding: 32 }}>
               <h3 style={{ font: '700 19px var(--font-display)', margin: '0 0 14px' }}>Outros projetos</h3>
               <ul style={{ display: 'flex', flexDirection: 'column', gap: 10, margin: 0, padding: 0, listStyle: 'none' }}>
                 {c.projects.map((p, i) =>
                   p.url ? (
                     <li key={i}>
-                      <a href={p.url} target="_blank" rel="noreferrer" style={{ fontSize: 15, fontWeight: 700, color: 'var(--blue)', textDecoration: 'none' }}>
+                      <a href={p.url} target="_blank" rel="noreferrer" style={{ fontSize: 15, fontWeight: 700, color: 'var(--brand-ink)', textDecoration: 'none' }}>
                         {p.name} ↗
                       </a>
                     </li>
                   ) : (
-                    <li key={i} style={{ fontSize: 15, fontWeight: 700, color: '#21181499' }}>
+                    <li key={i} style={{ fontSize: 15, fontWeight: 700, color: 'var(--ink)' }}>
                       {p.name}
                     </li>
                   )
@@ -122,10 +122,10 @@ export default function Contato() {
       </section>
 
       <section className="container" style={{ margin: '0 auto 96px', padding: '0 32px' }}>
-        <div className="grid-2" style={{ background: 'var(--gold)', borderRadius: 28, padding: '56px 48px', display: 'grid', gridTemplateColumns: '1.3fr 1fr', gap: 32, alignItems: 'center' }}>
+        <div className="grid-2" style={{ background: 'var(--brand-coral)', borderRadius: 28, padding: 'clamp(24px, 5vw, 56px) clamp(24px, 5vw, 48px)', display: 'grid', gridTemplateColumns: '1.3fr 1fr', gap: 32, alignItems: 'center' }}>
           <div>
-            <h2 style={{ font: '800 28px var(--font-display)', color: '#211814', margin: '0 0 12px' }}>Assine a newsletter mensal</h2>
-            <p style={{ fontSize: 16, lineHeight: 1.6, color: '#211814CC', margin: 0 }}>Receba as atualizações do REJORC direto no seu e-mail, uma vez por mês.</p>
+            <h2 style={{ font: '800 28px var(--font-display)', color: 'var(--ink)', margin: '0 0 12px' }}>Assine a newsletter mensal</h2>
+            <p style={{ fontSize: 16, lineHeight: 1.6, color: 'var(--ink)', margin: 0 }}>Receba as atualizações do RESINFOC direto no seu e-mail, uma vez por mês.</p>
           </div>
           <NewsletterForm source="contato" style={{ justifySelf: 'end', maxWidth: 380 }} />
         </div>
@@ -135,10 +135,13 @@ export default function Contato() {
 }
 
 const inputStyle = {
+  width: '100%',
+  minWidth: 0,
+  color: 'var(--ink)',
+  background: 'var(--surface)',
   fontSize: 15,
   padding: '13px 14px',
   borderRadius: 10,
-  border: '1.5px solid #21181426',
-  outline: 'none',
+  border: '1.5px solid color-mix(in srgb, var(--brand-ink) 30%, transparent)',
   fontFamily: 'var(--font-body)',
 };
