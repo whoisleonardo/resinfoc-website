@@ -7,7 +7,6 @@ const NAV = [
   { to: '/acesso/painel/materias', label: 'Matérias' },
   { to: '/acesso/painel/fotos', label: 'Mídias' },
   { to: '/acesso/painel/atualizacoes', label: 'Atualizações' },
-  { to: '/acesso/painel/newsletter', label: 'Newsletter' },
   { to: '/acesso/painel/mensagens', label: 'Mensagens de contato' },
   { to: '/acesso/painel/usuarios', label: 'Usuários', adminOnly: true },
   { to: '/acesso/painel/auditoria', label: 'Auditoria' },

@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useContent } from '../content/ContentContext';
 import { API_URL } from '../api';
-import NewsletterForm from './NewsletterForm';
 import SocialIcon from './SocialIcon';
 
 const NAV_ITEMS = [
@@ -30,8 +29,8 @@ export default function Footer() {
   return (
     <footer style={{ background: 'var(--brand-ink)', color: '#F5F1EA', fontFamily: 'var(--font-body)' }}>
       <div
-        className="container grid-3"
-        style={{ display: 'grid', gridTemplateColumns: '1.3fr 1fr 1fr', gap: 48, padding: '72px 32px 40px' }}
+        className="container grid-2"
+        style={{ display: 'grid', gridTemplateColumns: '1.3fr 1fr', gap: 48, padding: '72px 32px 40px' }}
       >
         <div>
           <img src={resolveUrl(logoUrl)} alt={site.siteName || 'RESINFOC'} style={{ height: 44, width: 'auto', display: 'block', marginBottom: 18 }} />
@@ -78,16 +77,6 @@ export default function Footer() {
               </Link>
             ))}
           </div>
-        </div>
-
-        <div>
-          <div style={{ font: '700 15px var(--font-display)', textTransform: 'uppercase', letterSpacing: '0.04em', color: 'var(--brand-coral)', marginBottom: 16 }}>
-            Newsletter mensal
-          </div>
-          <p style={{ fontSize: 14.5, lineHeight: 1.6, color: '#F5F1EACC', margin: '0 0 16px' }}>
-            Receba as atualizações do projeto direto no seu e-mail, uma vez por mês.
-          </p>
-          <NewsletterForm source="footer" dark style={{ flexDirection: 'column', maxWidth: 380 }} />
         </div>
       </div>
 

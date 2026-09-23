@@ -28,14 +28,6 @@ export default function Overview() {
       {stats && (
         <div className="stat-grid">
           <div className="stat-box">
-            <div className="value">{stats.subscribers}</div>
-            <div className="label">Inscritos na newsletter</div>
-          </div>
-          <div className="stat-box">
-            <div className="value">{stats.recentSubscribers}</div>
-            <div className="label">Novos inscritos (30 dias)</div>
-          </div>
-          <div className="stat-box">
             <div className="value">{stats.unreadMessages}</div>
             <div className="label">Mensagens não lidas</div>
           </div>
@@ -52,7 +44,6 @@ export default function Overview() {
         <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
           <Link className="btn btn-outline" to="/acesso/painel/conteudo">Editar conteúdo do site</Link>
           <Link className="btn btn-outline" to="/acesso/painel/materias">Gerenciar matérias</Link>
-          <Link className="btn btn-outline" to="/acesso/painel/newsletter">Ver inscritos</Link>
           <Link className="btn btn-outline" to="/acesso/painel/mensagens">Ver mensagens</Link>
         </div>
       </div>

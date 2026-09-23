@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { useContent } from '../content/ContentContext';
 import { api } from '../api';
-import NewsletterForm from '../components/NewsletterForm';
 
 const ASSUNTOS = ['Sugestão de pauta', 'Quero participar', 'Parceria', 'Outro'];
 
@@ -118,16 +117,6 @@ export default function Contato() {
               </ul>
             </div>
           )}
-        </div>
-      </section>
-
-      <section className="container" style={{ margin: '0 auto 96px', padding: '0 32px' }}>
-        <div className="grid-2" style={{ background: 'var(--brand-coral)', borderRadius: 28, padding: 'clamp(24px, 5vw, 56px) clamp(24px, 5vw, 48px)', display: 'grid', gridTemplateColumns: '1.3fr 1fr', gap: 32, alignItems: 'center' }}>
-          <div>
-            <h2 style={{ font: '800 28px var(--font-display)', color: 'var(--ink)', margin: '0 0 12px' }}>Assine a newsletter mensal</h2>
-            <p style={{ fontSize: 16, lineHeight: 1.6, color: 'var(--ink)', margin: 0 }}>Receba as atualizações do RESINFOC direto no seu e-mail, uma vez por mês.</p>
-          </div>
-          <NewsletterForm source="contato" style={{ justifySelf: 'end', maxWidth: 380 }} />
         </div>
       </section>
     </div>

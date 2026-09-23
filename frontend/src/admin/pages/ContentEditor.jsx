@@ -60,7 +60,6 @@ function HomeTab() {
   const hero = useSection('home_hero');
   const pillars = useSection('pillars');
   const project = useSection('current_project');
-  const newsletterCta = useSection('newsletter_cta');
 
   return (
     <div>
@@ -117,18 +116,6 @@ function HomeTab() {
             <TextField label="Texto do botão" value={project.data.ctaLabel} onChange={(v) => project.setData({ ...project.data, ctaLabel: v })} />
             <MediaPicker label="Imagem/vídeo" media={project.data.image} onChange={(m) => project.setData({ ...project.data, image: m })} />
             <SaveBar saving={project.saving} saved={project.saved} error={project.error} onSave={() => project.save(project.data)} />
-          </>
-        )}
-      </div>
-
-      <div className="admin-card">
-        <h2>Chamada da newsletter</h2>
-        <p className="hint">Texto da faixa amarela de assinatura (aparece em várias páginas).</p>
-        {newsletterCta.data && (
-          <>
-            <TextField label="Título" value={newsletterCta.data.title} onChange={(v) => newsletterCta.setData({ ...newsletterCta.data, title: v })} />
-            <TextAreaField label="Texto" rows={2} value={newsletterCta.data.text} onChange={(v) => newsletterCta.setData({ ...newsletterCta.data, text: v })} />
-            <SaveBar saving={newsletterCta.saving} saved={newsletterCta.saved} error={newsletterCta.error} onSave={() => newsletterCta.save(newsletterCta.data)} />
           </>
         )}
       </div>

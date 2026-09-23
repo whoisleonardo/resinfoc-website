@@ -9,7 +9,6 @@ import Materias from './pages/Materias';
 import Fotos from './pages/Fotos';
 import Atualizacoes from './pages/Atualizacoes';
 import Contato from './pages/Contato';
-import NewsletterSair from './pages/NewsletterSair';
 
 import AcessoLogin from './admin/AcessoLogin';
 import AdminLayout from './admin/AdminLayout';
@@ -18,7 +17,6 @@ import ContentEditor from './admin/pages/ContentEditor';
 import MateriasAdmin from './admin/pages/MateriasAdmin';
 import FotosAdmin from './admin/pages/FotosAdmin';
 import AtualizacoesAdmin from './admin/pages/AtualizacoesAdmin';
-import NewsletterAdmin from './admin/pages/NewsletterAdmin';
 import MensagensAdmin from './admin/pages/MensagensAdmin';
 import UsuariosAdmin from './admin/pages/UsuariosAdmin';
 import AuditoriaAdmin from './admin/pages/AuditoriaAdmin';
@@ -54,7 +52,6 @@ export default function App() {
             <Route path="fotos" element={<Navigate to="/midias" replace />} />
             <Route path="atualizacoes" element={<Atualizacoes />} />
             <Route path="contato" element={<Contato />} />
-            <Route path="newsletter/sair" element={<NewsletterSair />} />
           </Route>
 
           <Route path="/acesso" element={<AcessoLogin />} />
@@ -64,7 +61,6 @@ export default function App() {
             <Route path="materias" element={<MateriasAdmin />} />
             <Route path="fotos" element={<FotosAdmin />} />
             <Route path="atualizacoes" element={<AtualizacoesAdmin />} />
-            <Route path="newsletter" element={<NewsletterAdmin />} />
             <Route path="mensagens" element={<MensagensAdmin />} />
             <Route path="usuarios" element={<UsuariosAdmin />} />
             <Route path="auditoria" element={<AuditoriaAdmin />} />

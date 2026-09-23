@@ -89,8 +89,4 @@ export const defaultContent = {
       { name: 'WhatsApp', href: '#' },
     ],
   },
-  newsletter_cta: {
-    title: 'Receba as novidades da RESINFOC',
-    text: 'Uma newsletter por mês com episódios, conversas e ciência para ouvir. Sem spam.',
-  },
 };

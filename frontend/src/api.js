@@ -44,8 +44,6 @@ export const api = {
   // publico
   getAllContent: () => request('/api/content'),
   getSection: (key) => request(`/api/content/${key}`),
-  subscribeNewsletter: (email, source) =>
-    request('/api/newsletter/subscribe', { method: 'POST', body: { email, source } }),
   sendContactMessage: (payload) => request('/api/contact', { method: 'POST', body: payload }),
 
   // auth
@@ -60,30 +58,6 @@ export const api = {
     const form = new FormData();
     form.append('file', file);
     return request('/api/media/upload', { method: 'POST', auth: true, isForm: true, body: form });
-  },
-
-  // newsletter (protegido)
-  listSubscribers: (q) => request(`/api/newsletter${q ? `?q=${encodeURIComponent(q)}` : ''}`, { auth: true }),
-  deleteSubscriber: (id) => request(`/api/newsletter/${id}`, { method: 'DELETE', auth: true }),
-  // envio de newsletter (protegido) + descadastro (publico)
-  getNewsletterSendConfig: () => request('/api/newsletter/send-config', { auth: true }),
-  sendNewsletterTest: (subject, html) =>
-    request('/api/newsletter/send-test', { method: 'POST', auth: true, body: { subject, html } }),
-  sendNewsletter: (subject, html) =>
-    request('/api/newsletter/send', { method: 'POST', auth: true, body: { subject, html } }),
-  listNewsletterSends: () => request('/api/newsletter/sends', { auth: true }),
-  unsubscribeNewsletter: (token) =>
-    request('/api/newsletter/unsubscribe', { method: 'POST', body: { token } }),
-
-  // O download do CSV precisa do token no header, entao baixa via fetch e
-  // devolve um Blob (um link <a href> direto voltaria 401).
-  exportSubscribersCsv: async () => {
-    const token = getToken();
-    const res = await fetch(`${API_URL}/api/newsletter/export.csv`, {
-      headers: token ? { Authorization: `Bearer ${token}` } : {},
-    });
-    if (!res.ok) throw new Error(`Erro ${res.status} ao exportar o CSV.`);
-    return res.blob();
   },
 
   // mensagens de contato (protegido)
