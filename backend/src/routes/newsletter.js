@@ -74,7 +74,7 @@ router.get('/export.csv', requireAuth, (req, res) => {
   logAction(req, { action: 'export', entity: 'newsletter', details: `Exportou ${rows.length} inscritos em CSV` });
 
   res.setHeader('Content-Type', 'text/csv; charset=utf-8');
-  res.setHeader('Content-Disposition', 'attachment; filename="newsletter-rejorc.csv"');
+  res.setHeader('Content-Disposition', 'attachment; filename="newsletter-resinfoc.csv"');
   res.send(header + body);
 });
 
@@ -130,7 +130,7 @@ router.get('/send-config', requireAuth, (req, res) => {
   res.json({
     configured: isConfigured(),
     fromEmail: process.env.NEWSLETTER_FROM_EMAIL || null,
-    fromName: process.env.NEWSLETTER_FROM_NAME || 'REJORC',
+    fromName: process.env.NEWSLETTER_FROM_NAME || 'RESINFOC',
     totalSubscribers: total,
     dailyFreeLimit: 300,
   });

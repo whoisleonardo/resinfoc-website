@@ -1,5 +1,5 @@
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:4000';
-const TOKEN_KEY = 'rejorc_token';
+const TOKEN_KEY = 'resinfoc_token';
 
 export function getToken() {
   return localStorage.getItem(TOKEN_KEY);

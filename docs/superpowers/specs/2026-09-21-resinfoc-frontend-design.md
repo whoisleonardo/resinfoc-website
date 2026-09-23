@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-Transformar o front-end clonado do REJORC em um portal do RESINFOC (Rede Sonora de Informação e Ciência), mantendo inalterados o backend, o painel administrativo e os formatos de conteúdo já consumidos pela aplicação.
+Transformar o front-end em um portal do RESINFOC (Rede Sonora de Informação e Ciência), mantendo os formatos de conteúdo já consumidos pela aplicação.
 
 ## Decisões confirmadas
 

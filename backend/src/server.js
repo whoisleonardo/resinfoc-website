@@ -68,5 +68,5 @@ app.use((err, req, res, next) => {
 
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {
-  console.log(`API do REJORC rodando em http://localhost:${PORT}`);
+  console.log(`API da RESINFOC rodando em http://localhost:${PORT}`);
 });

@@ -1,13 +1,14 @@
 {
-  "name": "rejorc-backend",
+  "name": "resinfoc-backend",
   "version": "1.0.0",
-  "description": "API do site REJORC - conteudo, newsletter, usuarios e auditoria",
+  "description": "API do site RESINFOC - conteudo, newsletter, usuarios e auditoria",
   "main": "src/server.js",
   "type": "commonjs",
   "scripts": {
     "start": "node src/server.js",
     "dev": "node --watch src/server.js",
-    "seed": "node src/seed.js"
+    "seed": "node src/seed.js",
+    "reset-content": "node src/resetContent.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

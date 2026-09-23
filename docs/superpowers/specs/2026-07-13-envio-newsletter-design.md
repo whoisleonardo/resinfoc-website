@@ -15,7 +15,7 @@ inscritos direto do painel, via Brevo (plano grátis: 300 e-mails/dia).
   No envio usa-se `getSemanticHTML()` (listas viram `<ul>/<ol>` de verdade).
 - **Sanitização no servidor:** `sanitize-html` com allowlist de tags antes
   de embrulhar no template — o HTML do editor nunca vai cru para o e-mail.
-- **Template:** cabeçalho e cores do REJORC + rodapé com link único de
+- **Template:** cabeçalho e cores da RESINFOC + rodapé com link único de
   descadastro por destinatário (`{{params.unsubscribeUrl}}` no Brevo, envio
   em lotes com `messageVersions`, até 500 por chamada).
 - **Descadastro:** coluna `unsubscribe_token` por inscrito (migração

@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Rebrand the existing REJORC public site as the RESINFOC portal while preserving the CMS, API contracts, and administrative interface.
+**Goal:** Establish the RESINFOC public site while preserving the CMS, API contracts, and administrative interface.
 
 **Architecture:** Keep the React route structure and `ContentContext` contract unchanged. Update the content seeds/fallbacks, shared visual tokens, and public page composition; add one static logo derivative in the front-end public assets so the brand renders without depending on a pre-populated media upload.
 
@@ -50,12 +50,12 @@ Expected: `frontend/public/resinfoc-logo.png` shows the coral RESINFOC lockup an
 Record these acceptance checks in the task notes and use them after Step 3:
 
 ```text
-- The primary header, footer, badges, cards, buttons, and focus ring no longer use REJORC purple/gold/green/blue tokens.
+- The primary header, footer, badges, cards, buttons, and focus ring use the RESINFOC visual tokens.
 - A coral call-to-action on the azul-petróleo background meets a readable contrast treatment.
 - At 390px wide, the logo stays inside the header without horizontal scrolling.
 ```
 
-Expected before Step 3: the current REJORC palette makes the first check fail.
+Expected before Step 3: the prior palette makes the first check fail.
 
 - [ ] **Step 3: Implement the RESINFOC token layer and responsive primitives**
 
@@ -119,11 +119,11 @@ The home content includes a Spotify URL of "https://open.spotify.com/show/03hof1
 All existing top-level content section keys remain present in both files.
 ```
 
-Expected before Step 2: the current values identify REJORC and contain no Spotify URL.
+Expected before Step 2: the current values do not identify RESINFOC and contain no Spotify URL.
 
 - [ ] **Step 2: Update both defaults without altering their schema**
 
-Change REJORC naming/copy to RESINFOC naming in both content files. Update the hero to explain the Rede Sonora de Informação e Ciência, revise photo/current-project/contact/newsletter copy to refer to audio, science and the RESINFOC, and set `materias.bannerUrl` to the provided Jornal Comunicação link.
+Change the naming/copy to RESINFOC in both content files. Update the hero to explain the Rede Sonora de Informação e Ciência, revise photo/current-project/contact/newsletter copy to refer to audio, science and the RESINFOC, and set `materias.bannerUrl` to the provided Jornal Comunicação link.
 
 Add a `spotify` object under `home_hero` with these exact fields:
 
@@ -251,16 +251,16 @@ git commit -m "feat: cria vitrine editorial do RESINFOC"
 - Materias category buttons still filter the existing items and cards still open a body modal or an external link as before.
 - Contact form keeps required-field validation, disabled sending state, success message and error message behavior.
 - Photo and update empty states render when their item arrays are empty.
-- No public page retains user-facing REJORC copy or hard-coded old brand colors.
+- No public page retains outdated branding or hard-coded old brand colors.
 ```
 
-Expected before Step 2: old REJORC copy and color literals exist on these pages.
+Expected before Step 2: outdated copy and color literals exist on these pages.
 
 - [ ] **Step 2: Apply semantic tokens and RESINFOC copy to all five pages**
 
-Replace visible REJORC names with RESINFOC-aware labels, use `var(--brand-ink)`, `var(--brand-coral)`, `var(--surface)` and `var(--ink)` in place of old purple/gold/green/blue literals, and use the microphone motif only as a decorative `aria-hidden` element. Do not alter the `CATS` values, API calls, field names, `MediaBlock` props, `MateriaModal` open state or `NewsletterForm` props.
+Replace visible legacy names with RESINFOC-aware labels, use `var(--brand-ink)`, `var(--brand-coral)`, `var(--surface)` and `var(--ink)` in place of old purple/gold/green/blue literals, and use the microphone motif only as a decorative `aria-hidden` element. Do not alter the `CATS` values, API calls, field names, `MediaBlock` props or `MateriaModal` open state.
 
-For page media text, change fixed alt and placeholder strings from “equipe do REJORC” / “projeto atual” to generic RESINFOC alternatives, such as `alt="Equipe do RESINFOC"` and `placeholderLabel="[ registro do RESINFOC ]"`.
+For page media text, use generic RESINFOC alternatives, such as `alt="Equipe do RESINFOC"` and `placeholderLabel="[ registro do RESINFOC ]"`.
 
 - [ ] **Step 3: Verify existing behavior after the retheme**
 

@@ -1,22 +1,21 @@
-# REJORC — site + painel de gestão
+# RESINFOC — site + painel de gestão
 
-Este projeto é a versão em React do site do REJORC (Rede de Jornalismo para a
-Cidadania, projeto de extensão da UFPR), com um backend próprio que permite à
+Este projeto é o site da RESINFOC (Rede Sonora de Informação e Ciência,
+projeto de extensão da UFPR), com um backend próprio que permite à
 gestora controlar **todo** o conteúdo do site (textos, imagens e vídeos —
-incluindo Reels do Instagram, TikTok e YouTube), gerenciar os e-mails
-inscritos na newsletter, cadastrar/remover usuárias do painel e consultar um
-log de auditoria de tudo que foi alterado.
+incluindo Reels do Instagram, TikTok e YouTube), cadastrar/remover usuárias
+do painel e consultar um log de auditoria de tudo que foi alterado.
 
 ## Estrutura do projeto
 
 ```
-rejorc-app/
+resinfoc-website/
 ├── backend/     API em Node.js + Express + SQLite
 └── frontend/    Site + painel em React (Vite)
 ```
 
-- **Site público**: `/`, `/sobre`, `/materias`, `/midias`, `/atualizacoes`,
-  `/contato` e `/newsletter/sair` (`/fotos` redireciona para `/midias`)
+- **Site público**: `/`, `/sobre`, `/materias`, `/midias`, `/atualizacoes`
+  e `/contato` (`/fotos` redireciona para `/midias`)
 - **Painel da gestão**: `/acesso` (login) → `/acesso/painel` (dashboard)
 
 Todo o conteúdo do site público vem da API — ou seja, tudo que a gestora
@@ -46,10 +45,6 @@ As integrações públicas configuradas são:
   vídeos incorporados do **YouTube**, **TikTok** e **Reels do Instagram**
   (basta colar o link).
 - **Atualizações**: linha do tempo do projeto em andamento.
-- **Newsletter**: ver todos os e-mails inscritos, buscar, remover e exportar
-  a lista em CSV — e **escrever e enviar a newsletter** para a lista direto
-  do painel (editor com negrito, links e imagens, botão de teste, histórico
-  de envios e link de descadastro automático em cada e-mail).
 - **Mensagens de contato**: ver, marcar como lida e apagar as mensagens
   enviadas pelo formulário de contato do site.
 - **Usuários**: criar e remover contas de acesso ao painel, com dois papéis
@@ -71,8 +66,8 @@ docker compose up
 Na primeira vez ele baixa e instala tudo (leva alguns minutos). Depois:
 
 - Site: `http://localhost:5173`
-- Painel: `http://localhost:5173/acesso` — login padrão
-  `admin@rejorc.ufpr.br` / `troque-esta-senha-123`
+- Painel: `http://localhost:5173/acesso` — use as credenciais definidas no
+  arquivo `backend/.env`
 - API: `http://localhost:4000`
 
 Na primeira subida é criado o arquivo `backend/.env` (copiado do
@@ -123,6 +118,17 @@ npm run seed   # cria o usuário admin e o conteúdo inicial do site
 npm run dev    # inicia a API em http://localhost:4000
 ```
 
+Se este projeto estiver usando um banco que já continha o conteúdo do site
+anterior, substitua somente as seções de conteúdo pelos padrões RESINFOC com:
+
+```bash
+npm run reset-content -- --confirm
+```
+
+O comando não altera contas, mensagens, arquivos enviados ou registros de
+auditoria; ele sobrescreve os textos, links e mídias configuradas nas seções
+do site.
+
 A API guarda tudo em um arquivo `backend/data.sqlite` (criado automaticamente)
 e as imagens enviadas pela gestora em `backend/uploads/`. Para fazer backup
 do site, basta guardar esses dois itens.
@@ -154,25 +160,6 @@ o link normal do vídeo, por exemplo:
 - Instagram: `https://www.instagram.com/reel/XXXXXXXXXXX/`
 
 O site incorpora o vídeo automaticamente no lugar da imagem.
-
-## Envio de newsletter (Brevo)
-
-O disparo dos e-mails usa o [Brevo](https://www.brevo.com) (plano grátis:
-300 e-mails/dia). Sem configurar, o painel continua funcionando — só a aba
-**Enviar newsletter** fica desativada, com instruções. Para ativar:
-
-1. Crie uma conta no Brevo (pode ser com qualquer e-mail).
-2. Em **Senders & IPs**, cadastre o e-mail que aparecerá como remetente
-   (ex: o Gmail do projeto) e confirme pelo link que chega nele. O remetente
-   **não precisa** ser o e-mail da conta.
-3. Em **Settings → SMTP & API → API Keys**, gere uma chave.
-4. No `backend/.env`, preencha `BREVO_API_KEY`, `NEWSLETTER_FROM_EMAIL`
-   (o remetente verificado) e `NEWSLETTER_FROM_NAME`, e reinicie a API.
-5. Em produção, preencha também `API_PUBLIC_URL` com a URL pública do
-   backend — é ela que faz as imagens aparecerem nos e-mails.
-
-No painel, use **"Enviar teste para mim"** antes de disparar para a lista:
-o e-mail chega só para você, do jeito que os inscritos vão receber.
 
 ## Colocando o site no ar (produção)
 
@@ -208,13 +195,12 @@ para a URL pública do backend — nesse caso ajuste também `FRONTEND_URL` e
 - **Administradora**: acesso total, incluindo criar/remover outras usuárias.
   Sempre precisa existir pelo menos uma administradora — o sistema impede
   que a última seja removida.
-- **Editora**: pode editar todo o conteúdo do site, ver/gerenciar newsletter
-  e mensagens, mas não pode criar nem remover usuárias.
+- **Editora**: pode editar o conteúdo do site e ver/gerenciar mensagens, mas
+  não pode criar nem remover usuárias.
 
 ## Stack usada
 
 - **Backend**: Node.js, Express, SQLite (via `better-sqlite3`), autenticação
   por JWT, upload de imagens com `multer`.
 - **Frontend**: React 18, React Router, Vite. Sem dependência de framework de
-  CSS — os estilos seguem a identidade visual original do REJORC (cores,
-  tipografia Baloo 2 + Nunito Sans).
+  CSS — os estilos seguem a identidade visual da RESINFOC.

@@ -68,7 +68,7 @@ function socialLinksHtml(socials) {
   return `<div style="text-align:center;padding:20px 8px 0;font-size:14px;">${links}</div>`;
 }
 
-// Template com a identidade do REJORC. O {{params.unsubscribeUrl}} e
+// Template com a identidade da RESINFOC. O {{params.unsubscribeUrl}} e
 // substituido pelo Brevo com o link unico de descadastro de cada pessoa.
 function buildEmailHtml(contentHtml, socials = []) {
   return `<!doctype html>
@@ -77,16 +77,16 @@ function buildEmailHtml(contentHtml, socials = []) {
 <body style="margin:0;padding:0;background:#F5F1EA;">
   <div style="max-width:640px;margin:0 auto;padding:24px 16px;font-family:Arial,Helvetica,sans-serif;color:#211814;">
     <div style="background:#211814;border-radius:14px 14px 0 0;padding:22px 28px;">
-      <span style="font-size:24px;font-weight:800;color:#F4B030;letter-spacing:1px;">REJORC</span>
-      <span style="font-size:12px;color:#F5F1EA;display:block;margin-top:4px;">Rede de Jornalismo para a Cidadania</span>
+      <span style="font-size:24px;font-weight:800;color:#A63D32;letter-spacing:1px;">RESINFOC</span>
+      <span style="font-size:12px;color:#F5F1EA;display:block;margin-top:4px;">Rede Sonora de Informação e Ciência</span>
     </div>
     <div style="background:#ffffff;padding:28px;border-radius:0 0 14px 14px;font-size:16px;line-height:1.6;">
       ${contentHtml}
     </div>
     ${socialLinksHtml(socials)}
     <div style="padding:18px 8px;text-align:center;font-size:12px;color:#6b625c;">
-      Você está recebendo este e-mail porque se inscreveu na newsletter do REJORC.<br />
-      <a href="{{params.unsubscribeUrl}}" style="color:#573B6F;">Não quero mais receber estes e-mails</a>
+      Você está recebendo este e-mail porque se inscreveu na newsletter da RESINFOC.<br />
+      <a href="{{params.unsubscribeUrl}}" style="color:#1F5278;">Não quero mais receber estes e-mails</a>
     </div>
   </div>
 </body>
@@ -109,7 +109,7 @@ async function sendBatch({ subject, html, recipients }) {
     body: JSON.stringify({
       sender: {
         email: process.env.NEWSLETTER_FROM_EMAIL,
-        name: process.env.NEWSLETTER_FROM_NAME || 'REJORC',
+        name: process.env.NEWSLETTER_FROM_NAME || 'RESINFOC',
       },
       subject,
       htmlContent: html,

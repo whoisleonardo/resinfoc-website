@@ -4,8 +4,8 @@ const db = require('./db');
 const { defaultContent } = require('./defaultContent');
 
 function seedAdmin() {
-  const email = (process.env.ADMIN_EMAIL || 'admin@rejorc.ufpr.br').toLowerCase();
-  const name = process.env.ADMIN_NAME || 'Administradora REJORC';
+  const email = (process.env.ADMIN_EMAIL || 'admin@resinfoc.com').toLowerCase();
+  const name = process.env.ADMIN_NAME || 'Administradora RESINFOC';
   const password = process.env.ADMIN_PASSWORD || 'troque-esta-senha-123';
 
   const existing = db.prepare('SELECT id FROM users WHERE email = ?').get(email);
