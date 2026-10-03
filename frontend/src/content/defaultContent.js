@@ -48,6 +48,15 @@ export const defaultContent = {
   },
   materias: { bannerUrl: 'https://jornalcomunicacao.ufpr.br/tag/jornal-comunicacao/', items: [] },
   fotos: { items: [] },
+  nossos_produtos: {
+    badge: 'Produções sonoras',
+    title: 'Nossos Produtos',
+    subtitle: 'Ouça episódios, entrevistas e outros conteúdos sonoros produzidos pela RESINFOC.',
+    ctaTitle: 'Quer ouvir mais produções da RESINFOC?',
+    ctaText: 'Acompanhe nossos canais para receber novidades e novos episódios.',
+    ctaButtonLabel: 'Fale com a gente',
+    items: [],
+  },
   sobre: {
     badge: 'Sobre o projeto',
     title: 'RESINFOC: Rede Sonora de Informação e Ciência',
