@@ -1,0 +1,42 @@
+import { Link } from 'react-router-dom';
+import { useContent } from '../content/ContentContext';
+import ProductPlayer from '../components/ProductPlayer';
+
+export default function NossosProdutos() {
+  const { content } = useContent();
+  const section = content.nossos_produtos || {};
+  const items = section.items || [];
+
+  return (
+    <div>
+      <section className="container" style={{ padding: '36px 32px 40px' }}>
+        <div style={{ display: 'inline-block', fontWeight: 800, fontSize: 13, letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--brand-ink)', background: 'var(--surface-muted)', padding: '8px 16px', borderRadius: 999, marginBottom: 20 }}>
+          {section.badge || 'Produções sonoras'}
+        </div>
+        <h1 style={{ font: '800 44px var(--font-display)', margin: '0 0 16px' }}>{section.title || 'Nossos Produtos'}</h1>
+        <p style={{ fontSize: 17, lineHeight: 1.6, color: 'var(--ink)', maxWidth: 640, margin: 0 }}>{section.subtitle}</p>
+      </section>
+
+      <section className="container" style={{ padding: '8px 32px 72px' }}>
+        {items.length === 0 ? <div className="empty-state">Nenhum produto sonoro cadastrado ainda.</div> : (
+          <div className="grid-3" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20, alignItems: 'start' }}>
+            {items.map((item, index) => (
+              <article key={item.id || index} style={{ background: 'var(--surface-muted)', borderRadius: 16, padding: 20 }}>
+                <h2 style={{ font: '800 23px var(--font-display)', margin: '0 0 8px' }}>{item.title || 'Produto sonoro'}</h2>
+                {item.description && <p style={{ lineHeight: 1.55, margin: '0 0 16px' }}>{item.description}</p>}
+                <ProductPlayer media={item.media} title={item.title || 'Produto sonoro'} />
+              </article>
+            ))}
+          </div>
+        )}
+      </section>
+
+      {section.ctaTitle && <section className="container" style={{ margin: '0 auto 96px', padding: '0 32px' }}>
+        <div className="grid-2" style={{ background: 'var(--brand-ink)', borderRadius: 24, padding: 'clamp(24px, 5vw, 48px)', display: 'grid', gridTemplateColumns: '1.3fr 1fr', gap: 32, alignItems: 'center' }}>
+          <div><h2 style={{ font: '800 27px var(--font-display)', color: 'var(--surface)', margin: '0 0 12px' }}>{section.ctaTitle}</h2><p style={{ fontSize: 15.5, lineHeight: 1.6, color: 'var(--surface)', margin: 0 }}>{section.ctaText}</p></div>
+          <Link to="/contato" style={{ justifySelf: 'end', maxWidth: '100%', textAlign: 'center', font: '700 16px var(--font-display)', color: 'var(--ink)', background: 'var(--brand-coral)', padding: '15px 28px', borderRadius: 999, textDecoration: 'none' }}>{section.ctaButtonLabel || 'Fale com a gente'}</Link>
+        </div>
+      </section>}
+    </div>
+  );
+}

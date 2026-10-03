@@ -8,6 +8,7 @@ const NAV_ITEMS = [
   { to: '/sobre', label: 'Sobre o RESINFOC' },
   { to: '/materias', label: 'Matérias' },
   { to: '/midias', label: 'Mídias' },
+  { to: '/nossos-produtos', label: 'Nossos Produtos' },
   { to: '/atualizacoes', label: 'Atualizações' },
   { to: '/contato', label: 'Contato' },
 ];

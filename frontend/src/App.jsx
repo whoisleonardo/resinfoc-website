@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import Sobre from './pages/Sobre';
 import Materias from './pages/Materias';
 import Fotos from './pages/Fotos';
+import NossosProdutos from './pages/NossosProdutos';
 import Atualizacoes from './pages/Atualizacoes';
 import Contato from './pages/Contato';
 
@@ -48,6 +49,7 @@ export default function App() {
             <Route path="sobre" element={<Sobre />} />
             <Route path="materias" element={<Materias />} />
             <Route path="midias" element={<Fotos />} />
+            <Route path="nossos-produtos" element={<NossosProdutos />} />
             {/* endereco antigo continua funcionando */}
             <Route path="fotos" element={<Navigate to="/midias" replace />} />
             <Route path="atualizacoes" element={<Atualizacoes />} />
