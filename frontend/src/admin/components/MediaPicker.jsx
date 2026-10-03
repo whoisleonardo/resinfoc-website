@@ -67,7 +67,7 @@ export default function MediaPicker({ media, onChange, label = 'Mídia (imagem, 
             <>
               <input
                 type="file"
-                accept={value.type === 'audio' ? 'audio/mpeg,audio/mp4,audio/x-m4a,audio/ogg,audio/wav,.mp3,.m4a,.ogg,.wav' : 'image/*'}
+                accept={value.type === 'audio' ? 'audio/mpeg,audio/mp4,audio/x-m4a,audio/ogg,audio/wav,.mp3,.mp4,.m4a,.ogg,.wav' : 'image/*'}
                 ref={fileRef}
                 onChange={handleFile}
                 style={{ marginBottom: 8 }}

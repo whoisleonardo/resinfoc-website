@@ -17,7 +17,7 @@ const ALLOWED_MIME = new Set([
 // Extensao permitida -> tipo real esperado (jpg e jpeg sao o mesmo formato).
 const EXT_TO_TYPE = {
   '.png': 'png', '.jpg': 'jpeg', '.jpeg': 'jpeg', '.webp': 'webp', '.gif': 'gif',
-  '.mp3': 'mp3', '.m4a': 'm4a', '.ogg': 'ogg', '.wav': 'wav',
+  '.mp3': 'mp3', '.mp4': 'm4a', '.m4a': 'm4a', '.ogg': 'ogg', '.wav': 'wav',
   '.pdf': 'pdf',
 };
 
