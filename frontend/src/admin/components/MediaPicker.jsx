@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 import { api, resolveMediaUrl as resolveUrl } from '../../api';
 import { VIDEO_TYPES } from '../../utils/video';
 
-export default function MediaPicker({ media, onChange, label = 'Mídia (imagem, áudio ou vídeo)' }) {
+export default function MediaPicker({ media, onChange, label = 'Mídia (imagem, áudio ou vídeo)', allowedTypes }) {
   const value = media || { type: 'image', url: '' };
   const [uploading, setUploading] = useState(false);
   const [error, setError] = useState('');
@@ -35,7 +35,7 @@ export default function MediaPicker({ media, onChange, label = 'Mídia (imagem, 
     <div className="field">
       <label>{label}</label>
       <div style={{ display: 'flex', gap: 8, marginBottom: 8, flexWrap: 'wrap' }}>
-        {VIDEO_TYPES.map((t) => (
+        {VIDEO_TYPES.filter((t) => !allowedTypes || allowedTypes.includes(t.value)).map((t) => (
           <button
             type="button"
             key={t.value}

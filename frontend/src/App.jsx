@@ -17,6 +17,7 @@ import Overview from './admin/pages/Overview';
 import ContentEditor from './admin/pages/ContentEditor';
 import MateriasAdmin from './admin/pages/MateriasAdmin';
 import FotosAdmin from './admin/pages/FotosAdmin';
+import ProdutosAdmin from './admin/pages/ProdutosAdmin';
 import AtualizacoesAdmin from './admin/pages/AtualizacoesAdmin';
 import MensagensAdmin from './admin/pages/MensagensAdmin';
 import UsuariosAdmin from './admin/pages/UsuariosAdmin';
@@ -62,6 +63,7 @@ export default function App() {
             <Route path="conteudo" element={<ContentEditor />} />
             <Route path="materias" element={<MateriasAdmin />} />
             <Route path="fotos" element={<FotosAdmin />} />
+            <Route path="produtos" element={<ProdutosAdmin />} />
             <Route path="atualizacoes" element={<AtualizacoesAdmin />} />
             <Route path="mensagens" element={<MensagensAdmin />} />
             <Route path="usuarios" element={<UsuariosAdmin />} />
